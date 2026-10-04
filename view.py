@@ -16,7 +16,6 @@ canvas.pack()
 canvas.create_oval(80, 30, 140, 150, fill="blue")
 canvas.update_idletasks()
 
-input()
 # Test that it works: draw something on the canvas!
 
 
@@ -61,4 +60,11 @@ def create_oval(canvas, particle):
 
 
 # Task (12/12): Define a function simulation_loop(f, timestep, particles)
+def simulation_loop(f, timestep, particles):
+
+    multiple_ovals = []
+
+    for singe_particle in particles:
+        single_oval = 
+
 

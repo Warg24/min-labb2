@@ -61,6 +61,12 @@ class Particle:
 
 
 # Task (9/12): In the Particle class, add a method bounding_box(self)
+    def bounding_box(self):
+        vec1 = Vec(self.position.x - self.radius, self.position.y + self.radius)
+        vec2 = Vec( self.position.x + self.radius, self.position.y - self.radius)
+    
+        return vec1, vec2
+
 
 
 
