@@ -27,13 +27,6 @@ class Vec:
     def get_coords(self):
         return (self.x, self.y)
 
-    
-
-        
-        
-
-
-    
 
 # Task (3/12): Additionally define a function dot(u, v)
 def dot(u,v):
@@ -62,13 +55,18 @@ class Particle:
 
 # Task (9/12): In the Particle class, add a method bounding_box(self)
     def bounding_box(self):
-        vec1 = Vec(self.position.x - self.radius, self.position.y + self.radius)
-        vec2 = Vec( self.position.x + self.radius, self.position.y - self.radius)
+        u = Vec(self.position.x - self.radius, self.position.y + self.radius) #Top left corner. 
+        w = Vec( self.position.x + self.radius, self.position.y - self.radius) # bottom right corner
     
-        return vec1, vec2
+        return u, w
 
 
+def reverse_all(dt, particles):
+    for p in particles:
+        p.velocity = -1 * p.velocity
 
+
+    
 
 
 

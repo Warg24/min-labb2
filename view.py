@@ -1,7 +1,7 @@
 ############################################################
 ### NB. This module is partially implemented for DAT425. ###
 ############################################################
-
+import time
 from model import *
 import tkinter as tk
 
@@ -15,6 +15,8 @@ canvas = tk.Canvas(root, width=width, height=height)
 canvas.pack()
 canvas.create_oval(80, 30, 140, 150, fill="blue")
 canvas.update_idletasks()
+
+
 
 # Test that it works: draw something on the canvas!
 
@@ -64,7 +66,25 @@ def simulation_loop(f, timestep, particles):
 
     multiple_ovals = []
 
-    for singe_particle in particles:
-        single_oval = 
+    for p in particles:
+        oval = create_oval(canvas, p)
+        multiple_ovals.append(oval)
+        last_update = time.time()
 
+    while True:
+
+        f(timestep, particles)
+
+        for p in particles:
+            p.inertial_move(timestep)
+
+        now = time.time()
+
+        if now - last_update > 1/30:
+            for i in range(len(particles)):
+                u, w = particles[i].bounding_box()
+                move_oval_to(canvas, multiple_ovals[i], u, w)
+            canvas.update()
+            last_update = now
+            print(particles[0].position)
 
